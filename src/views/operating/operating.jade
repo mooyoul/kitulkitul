@@ -1,0 +1,30 @@
+
+h2.operating-header
+  | <% if (state.name === 'INDOOR_TEMP_BASED_HEATING') { %>
+  | 실내난방
+  | <% } else if (state.name === 'AWAY') { %>
+  | 외출모드
+  | <% } else { %>
+  | 미지원 모드
+  | <% } %>
+.operating-body
+  | <% if (state.name === 'INDOOR_TEMP_BASED_HEATING') { %>
+  .heating-temp
+    dl.target-temp
+      dt 설정 온도
+      dd
+        span <%= state.props.targetTemp %>
+    dl.current-temp
+      dd
+        span <%= state.props.currentTemp %>
+      dt 현재 온도
+  button.btn-change-mode.btn-away(type="button" title="외출 설정")
+  | <% } else if (state.name === 'AWAY') { %>
+  button.btn-change-mode.btn-heating(type="button" title="난방 설정")
+  | <% } %>
+
+
+.temp-indicator
+  .temp-slider
+    .temp-text
+    .temp-value

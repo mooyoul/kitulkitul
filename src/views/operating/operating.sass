@@ -1,0 +1,187 @@
+@import compass
+
+.operating.component
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  text-align: center
+  color: #fff
+  background-color: rgb(0, 150, 136)
+  +transition(background-color ease-in-out 0.2s)
+
+  .operating-header
+    position: absolute
+    top: 20px
+    left: 0
+    margin: 0
+    width: 100%
+    font-size: 24px
+    height: 50px
+    line-height: 50px
+    font-weight: 100
+    +transition(color ease-in-out 0.2s)
+  .operating-body
+    .heating-temp
+      font-weight: 100
+      dl
+        margin: 0
+        dt, dd
+          margin: 0
+          +transition(color ease-in-out 0.2s)
+        dt
+          font-weight: 400
+        dd
+          span
+            display: inline-block
+            position: relative
+            &:before
+              content: '°'
+              display: block
+              position: absolute
+
+      .target-temp,
+      .current-temp
+        position: absolute
+        left: 0
+        width: 100%
+
+      .target-temp
+        top: 50%
+        +transform(translate3d(0, -50%, 0))
+        dt
+          font-size: 16px
+          margin-bottom: 8px
+          color: #f0f0f0
+        dd
+          font-size: 144px
+          color: #fff
+          span
+            &:before
+              right: -14px
+              top: 8px
+              width: 16px
+              font-size: 36px
+              font-weight: 200
+
+      .current-temp
+        bottom: 12px
+        dt
+          font-size: 12px
+          color: #e0e0e0
+          margin-top: 4px
+        dd
+          font-size: 18px
+          color: #f0f0f0
+          span
+            &:before
+              right: -8px
+              top: 0
+              width: 12px
+              font-size: 14px
+              font-weight: 200
+
+    .btn-change-mode
+      position: absolute
+      top: 100px
+      left: 12px
+      border: 0 none
+      background-color: rgba(0, 0, 0, 0.45)
+      color: #fff
+      border-radius: 50%
+      width: 32px
+      height: 32px
+      padding: 0
+      font-size: 14px
+      line-height: 1
+      &.btn-away:before
+        font-family: FontAwesome
+        content: "\f08b"
+      &.btn-heating:before
+        font-family: FontAwesome
+        content: "\f2c7"
+
+  &.heating
+    //background-color: rgb(233, 30, 99)
+    background-color: rgb(244, 67, 54)
+
+
+  .temp-indicator
+    position: absolute
+    top: 0
+    left: -9999px
+    width: 100%
+    height: 100%
+    opacity: 0.5
+    +transition(opacity ease-in-out 0.3s, left linear 0s 0.3s)
+    &:before
+      content: ''
+      display: block
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background-color: rgba(51, 51, 51, 0.5)
+      z-index: 1
+
+    &.active
+      left: 0
+      opacity: 1
+      +transition(opacity ease-in-out 0.3s)
+
+    .temp-slider
+      position: absolute
+      top: 50%
+      left: 50%
+      width: 160px
+      height: 80%
+      border-radius: 20px
+      background-color: rgba(0, 0, 0, 0.8)
+      overflow: hidden
+      z-index: 2
+      +transform(translate3d(-50%, -50%, 0))
+      .temp-text
+        position: absolute
+        left: 0
+        bottom: 6px
+        width: 100%
+        height: 24px
+        line-height: 24px
+        font-size: 24px
+        text-align: center
+        color: #aaa
+        z-index: 4
+        &:after
+          content: '°'
+      .temp-value
+        position: absolute
+        width: 100%
+        left: 0
+        bottom: 0
+        background-color: #fff
+        overflow: hidden
+        z-index: 3
+        &:before
+          content: ''
+          display: block
+          position: absolute
+          top: 0
+          left: 0
+          width: 100%
+          height: 14px
+          color: #f0f0f0
+        &:after
+          content: ''
+          display: block
+          position: absolute
+          top: 4px
+          left: 50%
+          width: 20px
+          height: 4px
+          margin-left: -10px
+          border-top: 1px solid #999
+          border-bottom: 1px solid #999
+
+
